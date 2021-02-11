@@ -1,0 +1,19 @@
+muzzle {
+  pass {
+    group = "org.apache.synapse"
+    module = "synapse-nhttp-transport"
+    versions = "[3,)"
+  }
+}
+
+apply from: "$rootDir/gradle/java.gradle"
+
+configurations.all {
+  // the version used by Synapse isn't available in a public repository - we don't need it, so exclude it
+  exclude group: 'org.snmp4j', module: 'snmp4j'
+  exclude group: 'org.snmp4j', module: 'snmp4j-agent'
+}
+
+dependencies {
+  compileOnly group: 'org.apache.synapse', name: 'synapse-nhttp-transport', version: '3.0.0'
+}
