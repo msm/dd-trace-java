@@ -524,7 +524,10 @@ public class CoreTracer implements AgentTracer.TracerAPI {
                   .newInstance();
 
       continuableScopeManager.addScopeListener(scopeListener);
-    } catch (final ClassFormatError | ReflectiveOperationException | NoClassDefFoundError e) {
+    } catch (final ClassFormatError
+        | ReflectiveOperationException
+        | NoClassDefFoundError
+        | IllegalStateException e) {
       log.debug("Profiling of ScopeEvents is not available");
     }
   }
